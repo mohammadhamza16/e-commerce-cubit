@@ -10,6 +10,8 @@ class CustomButton extends StatelessWidget {
   final double? borderRadius;
   final double elevation;
   final bool isLoading;
+  final double? width;
+  final Widget? icon;
 
   const CustomButton({
     super.key,
@@ -20,6 +22,8 @@ class CustomButton extends StatelessWidget {
     this.borderRadius,
     this.elevation = 4.0,
     this.isLoading = false,
+    this.width,
+    this.icon,
   });
 
   @override
@@ -29,7 +33,7 @@ class CustomButton extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         curve: Curves.easeInOut,
-        width: double.infinity,
+        width: width ?? double.infinity,
         padding: EdgeInsets.symmetric(vertical: 16.r),
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -65,21 +69,27 @@ class CustomButton extends StatelessWidget {
                       strokeWidth: 2.5.sp,
                     ),
                   )
-                  : Text(
-                    text,
-                    style: TextStyle(
-                      color: textColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.sp,
-                      letterSpacing: 1.1.w,
-                      shadows: [
-                        Shadow(
-                          color: AppColor.shadow,
-                          blurRadius: 2,
-                          offset: Offset(1, 1),
+                  : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (icon != null) ...[icon!, SizedBox(width: 8.w)],
+                      Text(
+                        text,
+                        style: TextStyle(
+                          color: textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.sp,
+                          letterSpacing: 1.1.w,
+                          shadows: [
+                            Shadow(
+                              color: AppColor.shadow,
+                              blurRadius: 2,
+                              offset: Offset(1, 1),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
         ),
       ),

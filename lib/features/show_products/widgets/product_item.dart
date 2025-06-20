@@ -15,7 +15,7 @@ class ProductItem extends StatelessWidget {
       child: Card(
         elevation: 6,
         shadowColor: AppColor.black,
-        color: Theme.of(context).cardColor,
+        color: AppColor.lightBlue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
         ),
@@ -41,7 +41,14 @@ class ProductItem extends StatelessWidget {
                 horizontal: 12.0,
                 vertical: 4.0,
               ),
-              child: Text('\$9.99', style: AppStyle.productPrice),
+              child: Text(
+                '\$9.99',
+                style: AppStyle.productPrice.copyWith(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: AppColor.textSecondary,
+                ),
+              ),
             ),
           ],
         ),

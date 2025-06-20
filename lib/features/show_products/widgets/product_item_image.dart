@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/home/widgets/add_to_cart_item.dart';
+import 'package:e_commerce_app/features/show_products/widgets/add_to_cart_item.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemImage extends StatelessWidget {

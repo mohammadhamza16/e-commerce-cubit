@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/home/widgets/product_item.dart';
+import 'package:e_commerce_app/features/show_products/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
 class PorudctsGridView extends StatelessWidget {

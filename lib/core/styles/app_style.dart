@@ -38,8 +38,14 @@ class AppStyle {
     letterSpacing: 0.5.sp,
   );
   static TextStyle get productPrice => TextStyle(
-    fontSize: 15.sp,
-    fontWeight: FontWeight.w500,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColor.textPrimary,
+    letterSpacing: 0.5.sp,
+  );
+  static TextStyle get productPriceLabel => TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
     color: AppColor.textSecondary,
     letterSpacing: 0.5.sp,
   );
@@ -60,6 +66,12 @@ class AppStyle {
     fontSize: 16.sp,
     color: AppColor.textPrimary,
     fontWeight: FontWeight.w500,
+  );
+  static TextStyle get ratingValue => TextStyle(
+    fontSize: 16.sp,
+    color: AppColor.textSecondary,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.5.sp,
   );
   // Body text
   static TextStyle get body =>
