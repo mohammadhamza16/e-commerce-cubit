@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/styles/app_style.dart';
-import 'package:e_commerce_app/features/home/widgets/product_item.dart';
+
+import 'package:e_commerce_app/features/home/widgets/products_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class ProductsView extends StatelessWidget {
@@ -18,21 +19,7 @@ class ProductsView extends StatelessWidget {
                 child: Text('Discover', style: AppStyle.headline1),
               ),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.all(8.0),
-              sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
-                  childAspectRatio: 0.65,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => ProductItem(),
-                  childCount: 10,
-                ),
-              ),
-            ),
+            PorudctsGridView(),
           ],
         ),
       ),
