@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/features/show_products/widgets/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PorudctsGridView extends StatelessWidget {
   const PorudctsGridView({super.key});
@@ -7,12 +8,12 @@ class PorudctsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0.w),
       sliver: SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 8.0,
-          mainAxisSpacing: 8.0,
+          crossAxisSpacing: 8.0.w,
+          mainAxisSpacing: 8.0.h,
           childAspectRatio: 0.65,
         ),
         delegate: SliverChildBuilderDelegate(

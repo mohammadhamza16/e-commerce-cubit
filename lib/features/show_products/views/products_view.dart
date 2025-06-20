@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/features/show_products/widgets/products_grid_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductsView extends StatelessWidget {
   const ProductsView({super.key});
@@ -15,13 +16,13 @@ class ProductsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 16.0.h),
         child: CustomScrollView(
           slivers: [
             // Discover Title
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding: EdgeInsets.all(18.0.w),
                 child: Text('Discover', style: AppStyle.headline1),
               ),
             ),
@@ -29,15 +30,15 @@ class ProductsView extends StatelessWidget {
             // Horizontal Chips (Categories)
             SliverToBoxAdapter(
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 8.0),
-                height: 48,
+                margin: EdgeInsets.symmetric(vertical: 8.0.h),
+                height: 48.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                   itemBuilder:
                       (context, index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                         child: Chip(
                           label: Text(
                             categories[index],
