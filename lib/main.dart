@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/auth/views/regestier_view.dart';
+import 'package:e_commerce_app/features/home/views/home_view.dart';
 import 'package:e_commerce_app/router/on_generate_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +26,7 @@ class StoreApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const RegisterView(),
+      child: const HomeView(),
     );
   }
 }

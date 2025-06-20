@@ -50,13 +50,6 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Register'),
-          centerTitle: true,
-          backgroundColor: AppColor.primary,
-          elevation: 4,
-          shadowColor: AppColor.shadow,
-        ),
         body: LayoutBuilder(
           builder: (context, constraints) {
             return Container(

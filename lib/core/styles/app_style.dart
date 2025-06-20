@@ -16,10 +16,39 @@ class AppStyle {
   static TextStyle get headline2 => TextStyle(
     fontSize: 22.sp,
     fontWeight: FontWeight.w700,
-    color: AppColor.primary,
+    color: AppColor.dark,
     letterSpacing: 1.1.sp,
   );
-
+  static TextStyle get productTitlelarge => TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColor.textPrimary,
+    letterSpacing: 0.8.sp,
+  );
+  static TextStyle get productTitleMedium => TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColor.textPrimary,
+    letterSpacing: 0.6.sp,
+  );
+  static TextStyle get productTitleSmall => TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColor.textPrimary,
+    letterSpacing: 0.5.sp,
+  );
+  static TextStyle get productPrice => TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColor.textSecondary,
+    letterSpacing: 0.5.sp,
+  );
+  static TextStyle get productDescription => TextStyle(
+    fontSize: 16.sp,
+    color: AppColor.textSecondary,
+    height: 1.4,
+    letterSpacing: 0.5.sp,
+  );
   // Subtitle
   static TextStyle get subtitle => TextStyle(
     fontSize: 17.sp,
@@ -27,7 +56,11 @@ class AppStyle {
     fontWeight: FontWeight.w600,
     letterSpacing: 0.5.sp,
   );
-
+  static TextStyle get rating => TextStyle(
+    fontSize: 16.sp,
+    color: AppColor.textPrimary,
+    fontWeight: FontWeight.w500,
+  );
   // Body text
   static TextStyle get body =>
       TextStyle(fontSize: 16.sp, color: AppColor.textPrimary, height: 1.5);
