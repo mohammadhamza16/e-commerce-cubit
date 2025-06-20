@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../styles/app_color.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -14,8 +15,8 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.color = const Color(0xFF1976D2),
-    this.textColor = Colors.white,
+    this.color = AppColor.primary,
+    this.textColor = AppColor.background,
     this.borderRadius,
     this.elevation = 4.0,
     this.isLoading = false,
@@ -31,20 +32,23 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 16.r),
         decoration: BoxDecoration(
-          color: isLoading ? color.withValues(alpha: 0.7) : color,
+          gradient: LinearGradient(
+            colors: [
+              color,
+              AppColor.secondary.withValues(alpha: 0.85),
+              AppColor.accent.withValues(alpha: 0.7),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
           boxShadow: [
             BoxShadow(
-              color: color.withValues(alpha: 0.2),
+              color: AppColor.shadow,
               blurRadius: elevation,
               offset: const Offset(0, 2),
             ),
           ],
-          gradient: LinearGradient(
-            colors: [color, color.withValues(alpha: 0.85)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
         ),
         child: Center(
           child:
@@ -53,8 +57,10 @@ class CustomButton extends StatelessWidget {
                     width: 24.w,
                     height: 24.h,
                     child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      strokeWidth: 2.5,
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        AppColor.background,
+                      ),
+                      strokeWidth: 2.5.sp,
                     ),
                   )
                   : Text(
@@ -64,6 +70,13 @@ class CustomButton extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 18.sp,
                       letterSpacing: 1.1.w,
+                      shadows: [
+                        Shadow(
+                          color: AppColor.shadow,
+                          blurRadius: 2,
+                          offset: Offset(1, 1),
+                        ),
+                      ],
                     ),
                   ),
         ),
