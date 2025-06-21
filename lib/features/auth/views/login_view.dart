@@ -32,7 +32,6 @@ class _LoginViewState extends State<LoginView> {
     });
     if (_formKey.currentState?.validate() ?? false) {
     } else {
-      // Handle validation failure
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please fix the errors in red')),
       );

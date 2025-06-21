@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/cart/widgets/cart_item.dart';
 import 'package:flutter/material.dart';
 
 class CartView extends StatelessWidget {
@@ -7,10 +8,11 @@ class CartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text('Cart')),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(child: Text('Your cart is empty')),
+        body: ListView.builder(
+          itemBuilder: (context, index) {
+            return CartItem();
+          },
+          itemCount: 10, // Example item count
         ),
       ),
     );
