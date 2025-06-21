@@ -43,7 +43,7 @@ class AppStyle {
     color: AppColor.textPrimary,
     letterSpacing: 0.5.sp,
   );
-  static TextStyle get productPriceLabel => TextStyle(
+  static TextStyle get label14600 => TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
     color: AppColor.textSecondary,

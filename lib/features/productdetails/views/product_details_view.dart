@@ -56,7 +56,7 @@ class ProductDetailsView extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text('Price', style: AppStyle.productPriceLabel),
+                    Text('Price', style: AppStyle.label14600),
                     SizedBox(height: 4.0.h),
                     Text('\$99.99', style: AppStyle.productPrice),
                   ],
