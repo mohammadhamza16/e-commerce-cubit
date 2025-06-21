@@ -15,15 +15,22 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  final TextEditingController fullNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  late final TextEditingController fullNameController;
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+  late final TextEditingController confirmPasswordController;
   final _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
-
   bool _obscurePassword = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fullNameController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+  }
 
   void _submit() {
     setState(() {

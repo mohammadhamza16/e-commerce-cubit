@@ -14,11 +14,17 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
   final _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
   bool _obscurePassword = true;
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
 
   void _submit() {
     setState(() {
