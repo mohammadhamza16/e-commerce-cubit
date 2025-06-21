@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/features/show_products/widgets/add_to_cart_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +11,7 @@ class ProductItemImage extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: Image.asset('assets/images/product.png', fit: BoxFit.cover),
+          child: Image.asset(AppAssets.product, fit: BoxFit.cover),
         ),
         Positioned(top: 8.h, right: 8.w, child: AddToCartIcon()),
       ],

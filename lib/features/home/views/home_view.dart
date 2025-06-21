@@ -34,35 +34,46 @@ class _HomeViewState extends State<HomeView> {
         bottomNavigationBar: BottomNavigationBar(
           landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
           type: BottomNavigationBarType.fixed,
-          showUnselectedLabels: true,
-          showSelectedLabels: true,
+
           selectedFontSize: 14.sp,
           unselectedFontSize: 12.sp,
-          iconSize: 24.sp,
           selectedItemColor: AppColor.primary,
-          unselectedItemColor: AppColor.textSecondary,
+
+          iconSize: 24.sp,
           onTap: _changeIndex,
           currentIndex: _selectedIndex,
 
           selectedLabelStyle: AppStyle.body.copyWith(
             fontWeight: FontWeight.bold,
           ),
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Image.asset(
+                'assets/icons/home.png',
+                width: 24.w,
+                height: 24.h,
+                color: _selectedIndex == 0 ? AppColor.primary : Colors.grey,
+              ),
               label: 'Home',
-              activeIcon: Icon(Icons.home_outlined),
             ),
 
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
+              icon: Image.asset(
+                'assets/icons/cart.png',
+                color: _selectedIndex == 1 ? AppColor.primary : Colors.grey,
+                width: 24.w,
+                height: 24.h,
+              ),
               label: 'Cart',
-              activeIcon: Icon(Icons.shopping_cart_outlined),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Image.asset(
+                color: _selectedIndex == 2 ? AppColor.primary : Colors.grey,
+                'assets/icons/profile.png',
+                width: 24.w,
+                height: 24.h,
+              ),
               label: 'Profile',
-              activeIcon: Icon(Icons.person_outline),
             ),
           ],
         ),

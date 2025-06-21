@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
@@ -28,7 +29,7 @@ class ProductDetailsView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset('assets/images/product.png', fit: BoxFit.cover),
+                    Image.asset(AppAssets.product, fit: BoxFit.cover),
                     SizedBox(height: 16.0.h),
                     Text('Product Name', style: AppStyle.headline1),
                     SizedBox(height: 16.0.h),

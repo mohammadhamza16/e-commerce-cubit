@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/features/cart/widgets/custom_cart_button.dart';
@@ -26,7 +27,7 @@ class CartItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.asset('assets/images/product.png', width: 60.w, height: 60.h),
+          Image.asset(AppAssets.product, width: 60.w, height: 60.h),
           const SizedBox(width: 16.0),
           Expanded(
             child: Column(
@@ -50,7 +51,10 @@ class CartItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              InkWell(child: Icon(Icons.delete, color: AppColor.error)),
+              InkWell(
+                child: Image.asset(AppAssets.trash, width: 18.w, height: 24.h),
+                onTap: () {},
+              ),
               SizedBox(height: 40.0.h),
               Row(
                 children: [
