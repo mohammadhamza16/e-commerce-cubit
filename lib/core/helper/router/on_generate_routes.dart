@@ -1,4 +1,6 @@
 import 'package:e_commerce_app/core/helper/router/routes.dart';
+import 'package:e_commerce_app/features/auth/cubit/auth_cubit.dart';
+import 'package:e_commerce_app/features/auth/utils/sevice_locator.dart';
 import 'package:e_commerce_app/features/auth/views/login_view.dart';
 import 'package:e_commerce_app/features/auth/views/regestier_view.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
@@ -8,15 +10,28 @@ import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/features/show_products/views/products_view.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.home:
       return MaterialPageRoute(builder: (context) => const HomeView());
     case AppRoutes.loginView:
-      return MaterialPageRoute(builder: (context) => const LoginView());
+      return MaterialPageRoute(
+        builder:
+            (context) => BlocProvider<AuthCubit>(
+              create: (context) => getIt<AuthCubit>(),
+              child: const LoginView(),
+            ),
+      );
     case AppRoutes.registerView:
-      return MaterialPageRoute(builder: (context) => const RegisterView());
+      return MaterialPageRoute(
+        builder:
+            (context) => BlocProvider<AuthCubit>(
+              create: (context) => getIt<AuthCubit>(),
+              child: const RegisterView(),
+            ),
+      );
     case AppRoutes.productsView:
       return MaterialPageRoute(builder: (context) => const ProductsView());
     case AppRoutes.productDetailsView:

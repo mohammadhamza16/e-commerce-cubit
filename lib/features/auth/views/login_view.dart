@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/loading_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +16,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  late final TextEditingController emailController;
+  late final TextEditingController usernameController;
   late final TextEditingController passwordController;
   final _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -23,9 +24,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void initState() {
-    super.initState();
-    emailController = TextEditingController();
+    usernameController = TextEditingController();
     passwordController = TextEditingController();
+    super.initState();
   }
 
   void _submit() {
@@ -33,12 +34,14 @@ class _LoginViewState extends State<LoginView> {
       _autoValidate = true;
     });
     if (_formKey.currentState?.validate() ?? false) {
-      context.read<AuthCubit>().login(
-        emailController.text,
-        passwordController.text,
-      );
+      BlocProvider.of<AuthCubit>(
+        context,
+        listen: false,
+      ).login(usernameController.text, passwordController.text);
     } else {
       showAnimatedSnackBar(
+        type: AnimatedSnackBarType.error,
+        duration: const Duration(seconds: 2),
         context: context,
         message: 'Please fix the errors in red',
       );
@@ -47,7 +50,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void dispose() {
-    emailController.dispose();
+    usernameController.dispose();
     passwordController.dispose();
     super.dispose();
   }
@@ -58,9 +61,17 @@ class _LoginViewState extends State<LoginView> {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthError) {
-            showAnimatedSnackBar(message: state.message, context: context);
+            showAnimatedSnackBar(
+              message: state.message,
+              context: context,
+              type: AnimatedSnackBarType.error,
+            );
           } else if (state is AuthSuccess) {
-            showAnimatedSnackBar(message: 'Login Success', context: context);
+            showAnimatedSnackBar(
+              message: 'Login Success',
+              context: context,
+              type: AnimatedSnackBarType.success,
+            );
             Navigator.pushReplacementNamed(context, AppRoutes.home);
           }
         },
@@ -70,7 +81,7 @@ class _LoginViewState extends State<LoginView> {
             body = const LoadingBody();
           } else {
             body = LoginInitialBody(
-              emailController: emailController,
+              usernameController: usernameController,
               passwordController: passwordController,
               formKey: _formKey,
               autoValidate: _autoValidate,

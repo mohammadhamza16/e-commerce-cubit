@@ -8,10 +8,11 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._authRepo) : super(AuthInitial());
   final AuthRepo _authRepo;
-  login(String email, String password) async {
+  login(String username, String password) async {
     emit(AuthLoading());
     final Either<String, AuthResponseModel> result = await _authRepo.login(
-      email: email,
+      email:
+          username, // 'email' param is actually username for API compatibility
       password: password,
     );
     result.fold(
@@ -20,9 +21,10 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  register(String email, String password) async {
+  register(String username, String email, String password) async {
     emit(AuthLoading());
     final Either<String, AuthResponseModel> result = await _authRepo.register(
+      username: username,
       email: email,
       password: password,
     );

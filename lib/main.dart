@@ -1,10 +1,10 @@
 import 'package:e_commerce_app/core/helper/router/on_generate_routes.dart';
-import 'package:e_commerce_app/features/auth/cubit/auth_cubit.dart';
+import 'package:e_commerce_app/core/helper/router/routes.dart';
+
 import 'package:e_commerce_app/features/auth/utils/sevice_locator.dart';
-import 'package:e_commerce_app/features/auth/views/regestier_view.dart';
-import 'package:e_commerce_app/features/home/views/home_view.dart';
+import 'package:e_commerce_app/features/auth/views/login_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -24,19 +24,14 @@ class StoreApp extends StatelessWidget {
       splitScreenMode: true,
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
-        return BlocProvider(
-          create: (context) => AuthCubit(getIt()),
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'E-Commerce App',
+          onGenerateRoute: generateRoute,
 
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'E-Commerce App',
-            onGenerateRoute: generateRoute,
-
-            home: child,
-          ),
+          initialRoute: AppRoutes.loginView,
         );
       },
-      child: const RegisterView(),
     );
   }
 }

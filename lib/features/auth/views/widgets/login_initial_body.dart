@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/helper/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
@@ -7,7 +8,7 @@ import 'package:e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
 
 class LoginInitialBody extends StatelessWidget {
-  final TextEditingController emailController;
+  final TextEditingController usernameController;
   final TextEditingController passwordController;
   final GlobalKey<FormState> formKey;
   final bool autoValidate;
@@ -17,7 +18,7 @@ class LoginInitialBody extends StatelessWidget {
 
   const LoginInitialBody({
     super.key,
-    required this.emailController,
+    required this.usernameController,
     required this.passwordController,
     required this.formKey,
     required this.autoValidate,
@@ -66,16 +67,15 @@ class LoginInitialBody extends StatelessWidget {
                     child: Column(
                       children: [
                         CustomTextFormField(
-                          label: 'Email',
-                          keyboardType: TextInputType.emailAddress,
-                          controller: emailController,
-                          validator: Validators.email,
+                          label: 'Username',
+                          controller: usernameController,
+                          validator: Validators.username,
                         ),
                         SizedBox(height: 24.h),
                         CustomTextFormField(
                           label: 'Password',
-                          obscureText: obscurePassword,
                           controller: passwordController,
+                          obscureText: obscurePassword,
                           validator: Validators.password,
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -97,7 +97,11 @@ class LoginInitialBody extends StatelessWidget {
                               style: AppStyle.bodySecondary,
                             ),
                             TextButton(
-                              onPressed: () => Navigator.pop(context),
+                              onPressed:
+                                  () => Navigator.pushNamed(
+                                    context,
+                                    AppRoutes.registerView,
+                                  ),
                               child: Text('Sign up', style: AppStyle.button),
                             ),
                           ],

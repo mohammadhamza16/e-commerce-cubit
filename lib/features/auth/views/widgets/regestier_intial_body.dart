@@ -7,6 +7,7 @@ import 'package:e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
 
 class RegisterInitialBody extends StatelessWidget {
+  final TextEditingController usernameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
@@ -18,6 +19,7 @@ class RegisterInitialBody extends StatelessWidget {
 
   const RegisterInitialBody({
     super.key,
+    required this.usernameController,
     required this.emailController,
     required this.passwordController,
     required this.confirmPasswordController,
@@ -69,8 +71,13 @@ class RegisterInitialBody extends StatelessWidget {
                       child: Column(
                         children: [
                           CustomTextFormField(
+                            label: 'Username',
+                            controller: usernameController,
+                            validator: Validators.fullName,
+                          ),
+                          SizedBox(height: 24.h),
+                          CustomTextFormField(
                             label: 'Email',
-                            hint: 'Enter your email address',
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
                             validator: Validators.email,
@@ -78,9 +85,9 @@ class RegisterInitialBody extends StatelessWidget {
                           SizedBox(height: 24.h),
                           CustomTextFormField(
                             label: 'Password',
-                            hint: 'Enter your password',
                             controller: passwordController,
                             obscureText: obscurePassword,
+                            validator: Validators.password,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 obscurePassword
@@ -89,14 +96,13 @@ class RegisterInitialBody extends StatelessWidget {
                               ),
                               onPressed: onTogglePassword,
                             ),
-                            validator: Validators.password,
                           ),
                           SizedBox(height: 24.h),
                           CustomTextFormField(
                             label: 'Confirm Password',
-                            hint: 'Re-enter your password',
                             controller: confirmPasswordController,
                             obscureText: obscurePassword,
+                            validator: Validators.password,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 obscurePassword
@@ -105,11 +111,6 @@ class RegisterInitialBody extends StatelessWidget {
                               ),
                               onPressed: onTogglePassword,
                             ),
-                            validator:
-                                (value) =>
-                                    value != passwordController.text
-                                        ? 'Passwords do not match'
-                                        : null,
                           ),
                           SizedBox(height: 32.h),
                           CustomButton(text: 'Register', onPressed: onSubmit),

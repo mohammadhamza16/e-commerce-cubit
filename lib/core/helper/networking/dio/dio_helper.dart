@@ -1,16 +1,20 @@
-import 'package:dio/dio.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:e_commerce_app/core/helper/networking/dio/dio_errors.dart';
 import 'package:e_commerce_app/core/helper/networking/dio/end_points.dart';
-import 'dio_errors.dart';
 
 class DioHelper {
-  Dio get _dio => Dio(
-    BaseOptions(
-      baseUrl: EndPoints.baseUrl,
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 5),
-    ),
-  );
+  final Dio _dio;
+
+  DioHelper()
+    : _dio = Dio(
+        BaseOptions(
+          baseUrl: EndPoints.baseUrl,
+          connectTimeout: const Duration(seconds: 5),
+          receiveTimeout: const Duration(seconds: 5),
+          headers: {'Content-Type': 'application/json'}, // ثابتة هنا
+        ),
+      );
 
   Future<Either<String, Response>> post({
     required String endPoint,
@@ -25,6 +29,7 @@ class DioHelper {
       );
       return Right(response);
     } catch (error) {
+      print("Error during POST: $error");
       return Left(DioErrors.getErrorMessage(error));
     }
   }
