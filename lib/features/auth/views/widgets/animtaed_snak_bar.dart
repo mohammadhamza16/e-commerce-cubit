@@ -1,7 +1,7 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
 
-void showAnimatedSnackBar({
+showAnimatedSnackBar({
   required String message,
   required BuildContext context,
   AnimatedSnackBarType type = AnimatedSnackBarType.warning,

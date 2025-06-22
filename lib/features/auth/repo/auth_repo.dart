@@ -25,13 +25,12 @@ class AuthRepo {
   }
 
   Future<Either<String, AuthResponseModel>> register({
-    required String name,
     required String email,
     required String password,
   }) async {
     final result = await _dioHelper.post(
       endPoint: EndPoints.register,
-      data: {'name': name, 'email': email, 'password': password},
+      data: {'email': email, 'password': password},
     );
 
     return result.fold((failure) => Left(failure), (response) {

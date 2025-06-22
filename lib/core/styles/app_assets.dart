@@ -10,4 +10,5 @@ class AppAssets {
   static const String trash = 'assets/icons/trash.png';
   static const String addressBook = 'assets/icons/addressbook.png';
   static const String helpCenter = 'assets/icons/helpcenter.png';
+  static const String loading = 'assets/lottie/loading.json';
 }
