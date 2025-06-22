@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
-import 'package:e_commerce_app/core/validators.dart';
 import 'package:e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
 
@@ -69,14 +68,12 @@ class LoginInitialBody extends StatelessWidget {
                         CustomTextFormField(
                           label: 'Username',
                           controller: usernameController,
-                          validator: Validators.username,
                         ),
                         SizedBox(height: 24.h),
                         CustomTextFormField(
                           label: 'Password',
                           controller: passwordController,
                           obscureText: obscurePassword,
-                          validator: Validators.password,
                           suffixIcon: IconButton(
                             icon: Icon(
                               obscurePassword

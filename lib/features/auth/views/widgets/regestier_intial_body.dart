@@ -73,7 +73,7 @@ class RegisterInitialBody extends StatelessWidget {
                           CustomTextFormField(
                             label: 'Username',
                             controller: usernameController,
-                            validator: Validators.fullName,
+                            validator: Validators.username,
                           ),
                           SizedBox(height: 24.h),
                           CustomTextFormField(
