@@ -2,7 +2,6 @@ import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/features/address/views/address_view.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
-import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/features/show_products/views/products_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
