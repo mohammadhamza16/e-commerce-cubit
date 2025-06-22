@@ -1,9 +1,12 @@
 import 'package:e_commerce_app/core/helper/router/on_generate_routes.dart';
+import 'package:e_commerce_app/features/auth/utils/sevice_locator.dart';
 import 'package:e_commerce_app/features/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   runApp(const StoreApp());
 }
 

@@ -4,11 +4,16 @@ import 'package:e_commerce_app/core/helper/networking/dio/end_points.dart';
 import 'package:e_commerce_app/features/auth/model/auth_response_model.dart';
 
 class AuthRepo {
+  final DioHelper _dioHelper;
+
+  AuthRepo({required DioHelper dioHelper}) : _dioHelper = dioHelper;
+  DioHelper get dioHelper => _dioHelper;
+
   Future<Either<String, AuthResponseModel>> login({
     required String email,
     required String password,
   }) async {
-    final result = await DioHelper.post(
+    final result = await _dioHelper.post(
       endPoint: EndPoints.login,
       data: {'email': email, 'password': password},
     );
@@ -24,7 +29,7 @@ class AuthRepo {
     required String email,
     required String password,
   }) async {
-    final result = await DioHelper.post(
+    final result = await _dioHelper.post(
       endPoint: EndPoints.register,
       data: {'name': name, 'email': email, 'password': password},
     );
