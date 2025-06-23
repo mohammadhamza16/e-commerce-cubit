@@ -1,13 +1,15 @@
 import 'package:e_commerce_app/core/helper/router/routes.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
+import 'package:e_commerce_app/features/show_products/model/product_model.dart';
 import 'package:e_commerce_app/features/show_products/widgets/product_item_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -17,7 +19,7 @@ class ProductItem extends StatelessWidget {
       child: Card(
         elevation: 6.r,
         shadowColor: AppColor.black,
-        color: AppColor.lightBlue,
+        color: AppColor.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0.r),
         ),
@@ -25,14 +27,14 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: ProductItemImage()),
+            Expanded(child: ProductItemImage(imageUrl: product.image!)),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 12.0.w,
                 vertical: 8.0.h,
               ),
               child: Text(
-                'Product Name',
+                product.title!,
                 style: AppStyle.productTitleMedium,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -44,7 +46,7 @@ class ProductItem extends StatelessWidget {
                 vertical: 4.0.h,
               ),
               child: Text(
-                '\$9.99',
+                '\$${product.price}',
                 style: AppStyle.productPrice.copyWith(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,

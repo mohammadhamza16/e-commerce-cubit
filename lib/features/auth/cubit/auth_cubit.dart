@@ -11,8 +11,7 @@ class AuthCubit extends Cubit<AuthState> {
   login(String username, String password) async {
     emit(AuthLoading());
     final Either<String, AuthResponseModel> result = await _authRepo.login(
-      username:
-          username, // 'email' param is actually username for API compatibility
+      username: username,
       password: password,
     );
     result.fold(

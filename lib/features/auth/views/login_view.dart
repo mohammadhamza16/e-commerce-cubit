@@ -1,7 +1,7 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:e_commerce_app/core/helper/sevice_locator.dart';
 import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
-import 'package:e_commerce_app/core/widgets/loading_body.dart';
+import 'package:e_commerce_app/core/widgets/login_loading_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app/features/auth/cubit/auth_cubit.dart';
@@ -86,7 +86,7 @@ class _LoginViewState extends State<LoginView> {
         builder: (context, state) {
           Widget body;
           if (state is AuthLoading) {
-            body = const LoadingBody();
+            body = const LoginLoadingBody();
           } else {
             body = LoginInitialBody(
               usernameController: usernameController,

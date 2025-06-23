@@ -12,9 +12,25 @@ class DioHelper {
           baseUrl: EndPoints.baseUrl,
           connectTimeout: const Duration(seconds: 5),
           receiveTimeout: const Duration(seconds: 5),
-          headers: {'Content-Type': 'application/json'}, // ثابتة هنا
+          headers: {'Content-Type': 'application/json'},
         ),
       );
+  Future<Either<String, Response>> get({
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+  }) async {
+    try {
+      final response = await _dio.get(
+        endPoint,
+        queryParameters: queryParameters,
+        options: Options(headers: headers),
+      );
+      return Right(response);
+    } catch (error) {
+      return Left(DioErrors.getErrorMessage(error));
+    }
+  }
 
   Future<Either<String, Response>> post({
     required String endPoint,

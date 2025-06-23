@@ -1,10 +1,12 @@
+import 'package:e_commerce_app/features/show_products/model/product_model.dart';
 import 'package:e_commerce_app/features/show_products/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PorudctsGridView extends StatelessWidget {
-  const PorudctsGridView({super.key});
+class ProductsLoadedView extends StatelessWidget {
+  const ProductsLoadedView({super.key, required this.products});
 
+  final List<ProductModel> products;
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
@@ -17,8 +19,8 @@ class PorudctsGridView extends StatelessWidget {
           childAspectRatio: 0.65,
         ),
         delegate: SliverChildBuilderDelegate(
-          (context, index) => ProductItem(),
-          childCount: 10,
+          (context, index) => ProductItem(product: products[index]),
+          childCount: products.length,
         ),
       ),
     );
