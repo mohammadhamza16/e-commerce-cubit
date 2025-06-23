@@ -9,8 +9,8 @@ class LoadingBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 150,
-        height: 150,
+        width: 350,
+        height: 350,
         child: Lottie.asset(AppAssets.loading, fit: BoxFit.cover),
       ),
     );

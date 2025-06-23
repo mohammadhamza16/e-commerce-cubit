@@ -29,7 +29,6 @@ class DioHelper {
       );
       return Right(response);
     } catch (error) {
-      print("Error during POST: $error");
       return Left(DioErrors.getErrorMessage(error));
     }
   }

@@ -1,5 +1,7 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/loading_body.dart';
+import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
+import 'package:e_commerce_app/core/widgets/loading_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app/features/auth/cubit/auth_cubit.dart';
@@ -24,6 +26,12 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void initState() {
+    getIt<SecureTokenStorage>().getToken().then((token) {
+      if (token != null && token.isNotEmpty) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacementNamed(context, AppRoutes.home);
+      }
+    });
     usernameController = TextEditingController();
     passwordController = TextEditingController();
     super.initState();

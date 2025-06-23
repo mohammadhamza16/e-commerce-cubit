@@ -1,6 +1,6 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/animtaed_snak_bar.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/loading_body.dart';
+import 'package:e_commerce_app/core/widgets/loading_body.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/regestier_intial_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,7 +76,11 @@ class _RegisterViewState extends State<RegisterView> {
               message: state.message,
               type: AnimatedSnackBarType.success,
             );
-            Navigator.pushReplacementNamed(context, AppRoutes.home);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.home,
+              (route) => false,
+            );
           }
         },
         builder: (context, state) {

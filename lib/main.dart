@@ -1,8 +1,8 @@
 import 'package:e_commerce_app/core/helper/router/on_generate_routes.dart';
 import 'package:e_commerce_app/core/helper/router/routes.dart';
 
-import 'package:e_commerce_app/features/auth/utils/sevice_locator.dart';
-import 'package:e_commerce_app/features/auth/views/login_view.dart';
+import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
