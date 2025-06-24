@@ -8,7 +8,7 @@ import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/features/show_products/widgets/products_loaded_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
+
 import '../cubit/products/products_cubit.dart';
 
 class ProductsView extends StatefulWidget {

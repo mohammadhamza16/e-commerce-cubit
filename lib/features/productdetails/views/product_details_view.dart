@@ -19,7 +19,7 @@ class ProductDetailsView extends StatelessWidget {
         body: Center(child: Text('No product data found.')),
       );
     }
-    final product = args as ProductModel;
+    final product = args;
 
     return Scaffold(
       appBar: AppBar(
