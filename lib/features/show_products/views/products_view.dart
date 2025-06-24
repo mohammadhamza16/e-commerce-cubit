@@ -2,6 +2,7 @@ import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/features/show_products/cubit/category/category_cubit.dart';
 import 'package:e_commerce_app/features/show_products/cubit/category/category_state.dart';
 import 'package:e_commerce_app/features/show_products/widgets/categories_loaded_view.dart';
+import 'package:e_commerce_app/features/show_products/widgets/centered_loading_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/features/show_products/widgets/products_loaded_view.dart';
@@ -53,15 +54,8 @@ class _ProductsViewState extends State<ProductsView> {
                     child: Center(child: Text('Error: \\${state.message}')),
                   );
                 } else if (state is CategoryInitial) {
-                  return SliverToBoxAdapter(
-                    child: Center(
-                      child: Lottie.asset(
-                        AppAssets.imageLoading,
-                        fit: BoxFit.cover,
-                        height: 100.h,
-                        width: 100.w,
-                      ),
-                    ),
+                  return CenteredLoadingAnimation(
+                    animationPath: AppAssets.imageLoading,
                   );
                 } else {
                   return SliverToBoxAdapter(
@@ -80,8 +74,10 @@ class _ProductsViewState extends State<ProductsView> {
                     child: Center(child: Text('Error: \\${state.message}')),
                   );
                 } else if (state is ProductsInitial) {
-                  return SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator()),
+                  return CenteredLoadingAnimation(
+                    height: 250.h,
+                    width: 250.w,
+                    animationPath: AppAssets.productsLoading,
                   );
                 } else {
                   return SliverToBoxAdapter(child: SizedBox.shrink());

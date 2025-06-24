@@ -33,4 +33,28 @@ class ProductsCubit extends Cubit<ProductsState> {
       return Left(errorMsg);
     }
   }
+
+  Future<Either<String, List<ProductModel>>> fetchProductsByCategory({
+    required String categoryName,
+  }) async {
+    emit(ProductsInitial());
+    try {
+      final Either<String, List<ProductModel>> result = await _homeRepo
+          .fetchProductsByCategory(categoryName: categoryName);
+      return result.fold(
+        (failure) {
+          emit(ProductsError(failure));
+          return Left(failure);
+        },
+        (products) {
+          emit(ProductsSuccess(products));
+          return Right(products);
+        },
+      );
+    } catch (e) {
+      final errorMsg = e.toString();
+      emit(ProductsError(errorMsg));
+      return Left(errorMsg);
+    }
+  }
 }

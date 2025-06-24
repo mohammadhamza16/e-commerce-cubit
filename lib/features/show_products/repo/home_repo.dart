@@ -62,4 +62,24 @@ class HomeRepo {
       return Right(categories);
     });
   }
+
+  Future<Either<String, List<ProductModel>>> fetchProductsByCategory({
+    required String categoryName,
+  }) async {
+    final result = await _dioHelper.get(
+      endPoint: '${EndPoints.productsByCategory}/$categoryName',
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    return result.fold((failure) => Left(failure), (response) {
+      if (response.statusCode != 200) {
+        return Left('Failed to fetch products for category');
+      }
+      final List<ProductModel> products =
+          (response.data as List)
+              .map((item) => ProductModel.fromJson(item))
+              .toList();
+      return Right(products);
+    });
+  }
 }
