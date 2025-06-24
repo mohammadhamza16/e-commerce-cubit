@@ -37,6 +37,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case AppRoutes.productDetailsView:
       return MaterialPageRoute(
         builder: (context) => const ProductDetailsView(),
+        settings: settings,
       );
     case AppRoutes.cartView:
       return MaterialPageRoute(builder: (context) => const CartView());

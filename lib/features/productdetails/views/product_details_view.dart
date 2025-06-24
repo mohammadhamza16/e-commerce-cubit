@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
+import 'package:e_commerce_app/features/show_products/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,6 +12,15 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments;
+    if (args == null || args is! ProductModel) {
+      return Scaffold(
+        appBar: AppBar(title: Text('Details')),
+        body: Center(child: Text('No product data found.')),
+      );
+    }
+    final product = args as ProductModel;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -21,55 +32,78 @@ class ProductDetailsView extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0.w),
-        child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.28,
+                width: double.infinity,
+                child: CachedNetworkImage(
+                  imageUrl: product.image ?? '',
+                  fit: BoxFit.contain,
+                  placeholder:
+                      (context, url) =>
+                          Center(child: CircularProgressIndicator()),
+                  errorWidget:
+                      (context, url, error) =>
+                          Image.asset(AppAssets.product, fit: BoxFit.contain),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(child: SizedBox(height: 20.h)),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              sliver: SliverToBoxAdapter(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(AppAssets.product, fit: BoxFit.cover),
-                    SizedBox(height: 16.0.h),
-                    Text('Product Name', style: AppStyle.headline1),
+                    Text(product.title ?? '', style: AppStyle.headline1),
                     SizedBox(height: 16.0.h),
                     Row(
                       children: [
                         Text('Product Rating ', style: AppStyle.rating),
                         SizedBox(width: 8.0.w),
-                        Text('4.5', style: AppStyle.ratingValue),
+                        Text(
+                          product.rating?.rate?.toStringAsFixed(1) ?? '-',
+                          style: AppStyle.ratingValue,
+                        ),
                         Icon(Icons.star, color: Colors.yellow),
                       ],
                     ),
                     SizedBox(height: 16.0.h),
-                    Text(
-                      'Product description goes here. It provides details about the product features and specifications.',
-                      style: AppStyle.body,
-                    ),
+                    Text(product.description ?? '', style: AppStyle.body),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 16.0.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  children: [
-                    Text('Price', style: AppStyle.label14600),
-                    SizedBox(height: 4.0.h),
-                    Text('\$99.99', style: AppStyle.productPrice),
-                  ],
-                ),
-                CustomButton(
-                  icon: Icon(Icons.add_shopping_cart, color: Colors.white),
-                  text: 'Add To Cart',
-                  onPressed: () {},
-                  width: MediaQuery.sizeOf(context).width * .6,
-                ),
-              ],
+            SliverToBoxAdapter(child: SizedBox(height: 24.0.h)),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      Text('Price', style: AppStyle.label14600),
+                      SizedBox(height: 4.0.h),
+                      Text(
+                        product.price != null
+                            ? '\$${product.price!.toStringAsFixed(2)}'
+                            : '-',
+                        style: AppStyle.productPrice,
+                      ),
+                    ],
+                  ),
+                  CustomButton(
+                    icon: Icon(Icons.add_shopping_cart, color: Colors.white),
+                    text: 'Add To Cart',
+                    onPressed: () {},
+                    width: MediaQuery.sizeOf(context).width * .6,
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 16.0.h),
+            SliverToBoxAdapter(child: SizedBox(height: 16.0.h)),
           ],
         ),
       ),

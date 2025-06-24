@@ -14,7 +14,11 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, AppRoutes.productDetailsView);
+        Navigator.pushNamed(
+          context,
+          AppRoutes.productDetailsView,
+          arguments: product,
+        );
       },
       child: Card(
         elevation: 6.r,

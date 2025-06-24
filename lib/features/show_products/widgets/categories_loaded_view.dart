@@ -75,7 +75,7 @@ class _CategoriesLoadedViewState extends State<CategoriesLoadedView>
             if (isLoading)
               Positioned.fill(
                 child: Container(
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.white.withValues(alpha: 0.7),
                   child: Center(
                     child: Lottie.asset(
                       AppAssets.imageLoading,
