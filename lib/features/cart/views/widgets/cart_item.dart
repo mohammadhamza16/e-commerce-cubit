@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
-import 'package:e_commerce_app/features/cart/widgets/custom_cart_button.dart';
+import 'package:e_commerce_app/features/cart/views/widgets/custom_cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

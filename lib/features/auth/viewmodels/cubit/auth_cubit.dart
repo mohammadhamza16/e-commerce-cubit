@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce_app/features/auth/model/auth_response_model.dart';
-import 'package:e_commerce_app/features/auth/repo/auth_repo.dart';
+
+import 'package:e_commerce_app/features/auth/models/auth_response_model.dart';
+import 'package:e_commerce_app/features/auth/viewmodels/repo/auth_repo.dart';
 
 part 'auth_state.dart';
 

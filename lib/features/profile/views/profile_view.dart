@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/core/styles/app_assets.dart';
-import 'package:e_commerce_app/features/profile/widgets/custom_logout.dart';
-import 'package:e_commerce_app/features/profile/widgets/profile_item.dart';
+import 'package:e_commerce_app/features/profile/views/widgets/custom_logout.dart';
+import 'package:e_commerce_app/features/profile/views/widgets/profile_item.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {

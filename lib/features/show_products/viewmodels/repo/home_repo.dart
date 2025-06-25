@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce_app/core/helper/networking/dio/dio_helper.dart';
 import 'package:e_commerce_app/core/helper/networking/dio/end_points.dart';
-import 'package:e_commerce_app/features/show_products/model/category_model.dart';
-import 'package:e_commerce_app/features/show_products/model/product_model.dart';
+import 'package:e_commerce_app/features/show_products/models/category_model.dart';
+import 'package:e_commerce_app/features/show_products/models/product_model.dart';
 
 class HomeRepo {
   final DioHelper _dioHelper;

@@ -1,10 +1,12 @@
 import 'package:e_commerce_app/core/helper/networking/dio/dio_helper.dart';
 import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
-import 'package:e_commerce_app/features/auth/cubit/auth_cubit.dart';
-import 'package:e_commerce_app/features/auth/repo/auth_repo.dart';
-import 'package:e_commerce_app/features/show_products/cubit/category/category_cubit.dart';
-import 'package:e_commerce_app/features/show_products/cubit/products/products_cubit.dart';
-import 'package:e_commerce_app/features/show_products/repo/home_repo.dart';
+
+import 'package:e_commerce_app/features/auth/viewmodels/repo/auth_repo.dart';
+import 'package:e_commerce_app/features/auth/viewmodels/cubit/auth_cubit.dart';
+import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_cubit.dart';
+import 'package:e_commerce_app/features/show_products/viewmodels/cubit/products_cubit/products_cubit.dart';
+import 'package:e_commerce_app/features/show_products/viewmodels/repo/home_repo.dart';
+
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;

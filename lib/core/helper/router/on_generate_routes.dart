@@ -1,10 +1,12 @@
 import 'package:e_commerce_app/core/helper/router/routes.dart';
-import 'package:e_commerce_app/features/auth/cubit/auth_cubit.dart';
+
 import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/features/auth/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/auth/views/login_view.dart';
 import 'package:e_commerce_app/features/auth/views/regestier_view.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
 import 'package:e_commerce_app/features/home/views/home_view.dart';
+
 import 'package:e_commerce_app/features/productdetails/views/product_details_view.dart';
 import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/features/show_products/views/products_view.dart';

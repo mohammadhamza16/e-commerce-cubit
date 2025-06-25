@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
-import '../cubit/products/products_cubit.dart';
+import '../../viewmodels/cubit/products_cubit/products_cubit.dart';
 import 'package:e_commerce_app/core/styles/app_assets.dart';
 
 class CategoriesLoadedView extends StatefulWidget {

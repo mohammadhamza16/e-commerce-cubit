@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/show_products/model/rating_model.dart';
+import 'package:e_commerce_app/features/show_products/models/rating_model.dart';
 
 class ProductModel {
   int? id;

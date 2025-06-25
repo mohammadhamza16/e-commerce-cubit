@@ -3,7 +3,7 @@ import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
-import 'package:e_commerce_app/features/show_products/model/product_model.dart';
+import 'package:e_commerce_app/features/show_products/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

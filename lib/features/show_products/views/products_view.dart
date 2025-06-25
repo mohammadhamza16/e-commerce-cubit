@@ -1,15 +1,15 @@
 import 'package:e_commerce_app/core/styles/app_assets.dart';
-import 'package:e_commerce_app/features/show_products/cubit/category/category_cubit.dart';
-import 'package:e_commerce_app/features/show_products/cubit/category/category_state.dart';
-import 'package:e_commerce_app/features/show_products/widgets/categories_loaded_view.dart';
-import 'package:e_commerce_app/features/show_products/widgets/centered_loading_animation.dart';
+import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_cubit.dart';
+import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_state.dart';
+import 'package:e_commerce_app/features/show_products/views/widgets/categories_loaded_view.dart';
+import 'package:e_commerce_app/features/show_products/views/widgets/centered_loading_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
-import 'package:e_commerce_app/features/show_products/widgets/products_loaded_view.dart';
+import 'package:e_commerce_app/features/show_products/views/widgets/products_loaded_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/products/products_cubit.dart';
+import '../viewmodels/cubit/products_cubit/products_cubit.dart';
 
 class ProductsView extends StatefulWidget {
   const ProductsView({super.key});
