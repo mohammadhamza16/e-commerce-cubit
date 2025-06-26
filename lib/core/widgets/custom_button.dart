@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   final bool isLoading;
   final double? width;
   final Widget? icon;
+  final bool? isGreadiant;
 
   const CustomButton({
     super.key,
@@ -24,6 +25,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     this.width,
     this.icon,
+    this.isGreadiant = true,
   });
 
   @override
@@ -36,17 +38,21 @@ class CustomButton extends StatelessWidget {
         width: width ?? double.infinity,
         padding: EdgeInsets.symmetric(vertical: 16.r),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              color,
-              AppColor.secondary.withValues(alpha: 0.85),
-              AppColor.primary.withValues(alpha: 0.7),
-            ],
-            stops: const [0.0, 0.7, 1.0],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            transform: const GradientRotation(0.12),
-          ),
+          gradient:
+              isGreadiant == true
+                  ? LinearGradient(
+                    colors: [
+                      color,
+                      AppColor.secondary.withValues(alpha: 0.85),
+                      AppColor.primary.withValues(alpha: 0.7),
+                    ],
+                    stops: const [0.0, 0.7, 1.0],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    transform: const GradientRotation(0.12),
+                  )
+                  : null,
+          color: isGreadiant == true ? null : color,
           borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
           boxShadow: [
             BoxShadow(

@@ -1,9 +1,12 @@
 import 'package:e_commerce_app/core/helper/router/routes.dart';
 import 'package:e_commerce_app/core/helper/service_locator.dart';
 import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
+import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:flutter/material.dart';
+
+import 'package:e_commerce_app/core/widgets/custom_button.dart';
 
 class CustomLogout extends StatelessWidget {
   const CustomLogout({super.key});
@@ -18,37 +21,68 @@ class CustomLogout extends StatelessWidget {
           barrierDismissible: true,
           builder:
               (context) => AlertDialog(
+                backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                title: Row(
+                contentPadding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.logout, color: AppColor.error, size: 22),
-                    SizedBox(width: 6),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.error.withValues(alpha: 0.08),
+                        shape: BoxShape.circle,
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      child: Image.asset(
+                        AppAssets.warning,
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                    const SizedBox(height: 18),
                     Text(
-                      'Logout',
+                      'Logout ?',
                       style: AppStyle.headline2.copyWith(
                         color: AppColor.error,
+                        fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Are you sure you want to logout from your account? ',
+                      style: AppStyle.body.copyWith(
+                        color: Colors.black87,
+                        fontSize: 15,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ],
                 ),
-                content: Text(
-                  'Are you sure you want to logout?',
-                  style: AppStyle.body,
-                ),
+                actionsPadding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
+                actionsAlignment: MainAxisAlignment.center,
                 actions: [
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(false),
-                    child: const Text('Cancel'),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      foregroundColor: AppColor.error,
-                    ),
-                    onPressed: () => Navigator.of(context).pop(true),
-                    child: const Text('Logout'),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      CustomButton(
+                        isGreadiant: false,
+                        text: 'Logout',
+                        color: AppColor.error,
+                        textColor: Colors.white,
+                        onPressed: () => Navigator.of(context).pop(true),
+                      ),
+                      const SizedBox(height: 24),
+                      CustomButton(
+                        isGreadiant: false,
+                        text: 'Cancel',
+                        color: Colors.white,
+                        textColor: AppColor.info,
+                        onPressed: () => Navigator.of(context).pop(false),
+                      ),
+                    ],
                   ),
                 ],
               ),

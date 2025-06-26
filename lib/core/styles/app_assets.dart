@@ -13,4 +13,5 @@ class AppAssets {
   static const String loginLoading = 'assets/lottie/loading.json';
   static const String imageLoading = 'assets/lottie/image_loading.json';
   static const String productsLoading = 'assets/lottie/products_loading.json';
+  static const String warning = 'assets/images/warning.png';
 }
