@@ -1,11 +1,12 @@
-import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_cubit.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_state.dart';
 import 'package:e_commerce_app/features/show_products/views/widgets/categories_loaded_view.dart';
-import 'package:e_commerce_app/features/show_products/views/widgets/centered_loading_animation.dart';
+import 'package:e_commerce_app/features/show_products/views/widgets/categories_shimmer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/features/show_products/views/widgets/products_loaded_view.dart';
+import 'package:e_commerce_app/features/show_products/views/widgets/products_shimmer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,9 +54,7 @@ class _ProductsViewState extends State<ProductsView> {
                     child: Center(child: Text('Error: \\${state.message}')),
                   );
                 } else if (state is CategoryInitial) {
-                  return CenteredLoadingAnimation(
-                    animationPath: AppAssets.imageLoading,
-                  );
+                  return CategoriesShimmer(itemCount: 5);
                 } else {
                   return SliverToBoxAdapter(
                     child: Container(color: Colors.red, height: 100.h),
@@ -73,11 +72,7 @@ class _ProductsViewState extends State<ProductsView> {
                     child: Center(child: Text('Error: \\${state.message}')),
                   );
                 } else if (state is ProductsInitial) {
-                  return CenteredLoadingAnimation(
-                    height: 250.h,
-                    width: 250.w,
-                    animationPath: AppAssets.productsLoading,
-                  );
+                  return ProductsShimmer();
                 } else {
                   return SliverToBoxAdapter(child: SizedBox.shrink());
                 }
