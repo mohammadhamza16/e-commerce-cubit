@@ -1,8 +1,8 @@
-import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/core/helper/service_locator.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
-import 'package:e_commerce_app/features/address/views/address_view.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
+import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_cubit.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/cubit/products_cubit/products_cubit.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/repo/home_repo.dart';
@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
       child: ProductsView(),
     ),
     const CartView(),
-    const AddressView(),
+    const ProfileView(),
   ];
   int _selectedIndex = 0;
   _changeIndex(int index) {

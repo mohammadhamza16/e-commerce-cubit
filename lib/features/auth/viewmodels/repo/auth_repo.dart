@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/helper/networking/dio/dio_helper.dart';
 import 'package:e_commerce_app/core/helper/networking/dio/end_points.dart';
-import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/core/helper/service_locator.dart';
 import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
-import 'package:e_commerce_app/features/auth/model/auth_response_model.dart';
+
+import 'package:e_commerce_app/features/auth/models/auth_response_model.dart';
 
 class AuthRepo {
   final DioHelper _dioHelper;

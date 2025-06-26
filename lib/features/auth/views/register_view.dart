@@ -1,8 +1,8 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:e_commerce_app/features/auth/viewmodels/cubit/auth_cubit.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/animtaed_snak_bar.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/animated_snack_bar.dart';
 import 'package:e_commerce_app/core/widgets/login_loading_body.dart';
-import 'package:e_commerce_app/features/auth/views/widgets/regestier_intial_body.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/register_initial_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app/core/helper/router/routes.dart';

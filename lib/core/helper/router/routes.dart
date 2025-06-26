@@ -6,4 +6,5 @@ class AppRoutes {
   static const String productDetailsView = '/product_details';
   static const String cartView = '/cart';
   static const String profileView = '/profile';
+  static const String addressView = '/address';
 }

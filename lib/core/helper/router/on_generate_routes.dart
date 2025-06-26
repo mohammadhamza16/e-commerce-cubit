@@ -1,51 +1,65 @@
 import 'package:e_commerce_app/core/helper/router/routes.dart';
 
-import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/core/helper/service_locator.dart';
 import 'package:e_commerce_app/features/auth/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/auth/views/login_view.dart';
-import 'package:e_commerce_app/features/auth/views/regestier_view.dart';
+import 'package:e_commerce_app/features/auth/views/register_view.dart';
 import 'package:e_commerce_app/features/cart/views/cart_view.dart';
 import 'package:e_commerce_app/features/home/views/home_view.dart';
 
 import 'package:e_commerce_app/features/productdetails/views/product_details_view.dart';
 import 'package:e_commerce_app/features/profile/views/profile_view.dart';
 import 'package:e_commerce_app/features/show_products/views/products_view.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_commerce_app/features/address/views/address_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
+  WidgetBuilder builder;
+  PageTransitionType transitionType = PageTransitionType.sharedAxisVertical;
   switch (settings.name) {
     case AppRoutes.home:
-      return MaterialPageRoute(builder: (context) => const HomeView());
+      builder = (context) => const HomeView();
+      break;
     case AppRoutes.loginView:
-      return MaterialPageRoute(
-        builder:
-            (context) => BlocProvider<AuthCubit>(
-              create: (context) => getIt<AuthCubit>(),
-              child: const LoginView(),
-            ),
-      );
+      builder =
+          (context) => BlocProvider<AuthCubit>(
+            create: (context) => getIt<AuthCubit>(),
+            child: const LoginView(),
+          );
+      break;
     case AppRoutes.registerView:
-      return MaterialPageRoute(
-        builder:
-            (context) => BlocProvider<AuthCubit>(
-              create: (context) => getIt<AuthCubit>(),
-              child: const RegisterView(),
-            ),
-      );
+      builder =
+          (context) => BlocProvider<AuthCubit>(
+            create: (context) => getIt<AuthCubit>(),
+            child: const RegisterView(),
+          );
+      break;
     case AppRoutes.productsView:
-      return MaterialPageRoute(builder: (context) => const ProductsView());
+      builder = (context) => const ProductsView();
+      break;
     case AppRoutes.productDetailsView:
-      return MaterialPageRoute(
-        builder: (context) => const ProductDetailsView(),
-        settings: settings,
-      );
+      builder = (context) => const ProductDetailsView();
+      break;
     case AppRoutes.cartView:
-      return MaterialPageRoute(builder: (context) => const CartView());
+      builder = (context) => const CartView();
+      break;
     case AppRoutes.profileView:
-      return MaterialPageRoute(builder: (context) => const ProfileView());
+      builder = (context) => const ProfileView();
+      break;
+    case AppRoutes.addressView:
+      builder = (context) => const AddressView();
+      break;
     default:
-      return MaterialPageRoute(builder: (context) => (const HomeView()));
+      builder = (context) => const HomeView();
   }
+  return PageTransition(
+    child: Builder(builder: builder),
+    type: transitionType,
+    settings: settings,
+    duration: const Duration(milliseconds: 350),
+    reverseDuration: const Duration(milliseconds: 350),
+  );
 }

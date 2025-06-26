@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/helper/router/routes.dart';
 import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/features/profile/views/widgets/custom_logout.dart';
 import 'package:e_commerce_app/features/profile/views/widgets/profile_item.dart';
@@ -17,7 +18,15 @@ class ProfileView extends StatelessWidget {
             Divider(thickness: 8),
             ProfileItem(icon: AppAssets.profileIcon, title: 'My Details'),
             Divider(),
-            ProfileItem(icon: AppAssets.addressBook, title: 'Address Book'),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.addressView);
+              },
+              child: ProfileItem(
+                icon: AppAssets.addressBook,
+                title: 'Address Book',
+              ),
+            ),
             Divider(),
             ProfileItem(icon: AppAssets.info, title: 'FAQs'),
             Divider(),

@@ -1,5 +1,5 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/core/helper/service_locator.dart';
 import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
 import 'package:e_commerce_app/core/widgets/login_loading_body.dart';
 import 'package:e_commerce_app/features/auth/viewmodels/cubit/auth_cubit.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app/core/helper/router/routes.dart';
 import 'package:e_commerce_app/features/auth/views/widgets/login_initial_body.dart';
 
-import 'package:e_commerce_app/features/auth/views/widgets/animtaed_snak_bar.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/animated_snack_bar.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

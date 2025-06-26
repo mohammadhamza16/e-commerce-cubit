@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/core/helper/router/on_generate_routes.dart';
 import 'package:e_commerce_app/core/helper/router/routes.dart';
 
-import 'package:e_commerce_app/core/helper/sevice_locator.dart';
+import 'package:e_commerce_app/core/helper/service_locator.dart';
 
 import 'package:flutter/material.dart';
 
