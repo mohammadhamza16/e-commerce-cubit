@@ -1,3 +1,6 @@
+import 'package:e_commerce_app/core/helper/router/routes.dart';
+import 'package:e_commerce_app/core/helper/service_locator.dart';
+import 'package:e_commerce_app/core/helper/storage/secure_storage.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:flutter/material.dart';
@@ -50,17 +53,24 @@ class CustomLogout extends StatelessWidget {
                 ],
               ),
         );
-        if (shouldLogout == true) {}
+        if (shouldLogout == true) {
+          await getIt<SecureTokenStorage>().deleteToken();
+          if (context.mounted) {
+            Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil(AppRoutes.loginView, (route) => false);
+          }
+        }
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: AppColor.error.withOpacity(0.15)),
+          border: Border.all(color: AppColor.error.withValues(alpha: 0.15)),
           boxShadow: [
             BoxShadow(
-              color: AppColor.error.withOpacity(0.04),
+              color: AppColor.error.withValues(alpha: 0.04),
               blurRadius: 3,
               offset: Offset(0, 1),
             ),
