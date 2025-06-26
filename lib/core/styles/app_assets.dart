@@ -13,5 +13,9 @@ class AppAssets {
   static const String loginLoading = 'assets/lottie/loading.json';
   static const String imageLoading = 'assets/lottie/image_loading.json';
   static const String productsLoading = 'assets/lottie/products_loading.json';
-  static const String warning = 'assets/images/warning.png';
+  static const String warning = 'assets/icons/info.png';
+  static const String logo =
+      'assets/lottie/logo.json'; // Change to your real logo if available
+  static const String splashBackground =
+      'assets/images/splash.jpg'; // Add your splash background image here
 }

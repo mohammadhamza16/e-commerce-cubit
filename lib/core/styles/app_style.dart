@@ -129,7 +129,7 @@ class AppStyle {
 
   // ThemeData
   static ThemeData get themeData => ThemeData(
-    fontFamily: 'Cairo', // الخط الافتراضي لكل التطبيق
+    fontFamily: 'Cairo',
     primaryColor: AppColor.primary,
     scaffoldBackgroundColor: AppColor.background,
     colorScheme: ColorScheme.fromSwatch().copyWith(

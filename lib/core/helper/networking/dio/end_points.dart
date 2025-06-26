@@ -8,5 +8,4 @@ class EndPoints {
   static const String cart = '/carts';
   static const String cartProduct = '/category';
   static const String productsByCategory = '/products/category';
-  // Add more endpoints as needed for your app
 }

@@ -15,6 +15,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app/features/address/views/address_view.dart';
+import 'package:e_commerce_app/features/splash/views/splash_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   WidgetBuilder builder;
@@ -51,6 +52,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       break;
     case AppRoutes.addressView:
       builder = (context) => const AddressView();
+      break;
+    case AppRoutes.splash:
+      builder = (context) => const SplashView();
       break;
     default:
       builder = (context) => const HomeView();

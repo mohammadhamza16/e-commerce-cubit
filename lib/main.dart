@@ -29,7 +29,7 @@ class StoreApp extends StatelessWidget {
           title: 'E-Commerce App',
           onGenerateRoute: generateRoute,
 
-          initialRoute: AppRoutes.loginView,
+          initialRoute: AppRoutes.splash,
         );
       },
     );

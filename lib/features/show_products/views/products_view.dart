@@ -35,7 +35,6 @@ class _ProductsViewState extends State<ProductsView> {
         padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 16.0.h),
         child: CustomScrollView(
           slivers: [
-            // Discover Title
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.all(18.0.w),
