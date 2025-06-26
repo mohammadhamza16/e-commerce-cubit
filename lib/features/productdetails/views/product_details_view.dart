@@ -6,6 +6,7 @@ import 'package:e_commerce_app/core/widgets/custom_button.dart';
 import 'package:e_commerce_app/features/show_products/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 
 class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({super.key});
@@ -39,15 +40,18 @@ class ProductDetailsView extends StatelessWidget {
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.28,
                 width: double.infinity,
-                child: CachedNetworkImage(
-                  imageUrl: product.image ?? '',
-                  fit: BoxFit.contain,
-                  placeholder:
-                      (context, url) =>
-                          Center(child: CircularProgressIndicator()),
-                  errorWidget:
-                      (context, url, error) =>
-                          Image.asset(AppAssets.product, fit: BoxFit.contain),
+                child: Hero(
+                  tag: 'image_${product.image}',
+                  child: CachedNetworkImage(
+                    imageUrl: product.image ?? '',
+                    fit: BoxFit.contain,
+                    placeholder:
+                        (context, url) =>
+                            Center(child: Lottie.asset(AppAssets.imageLoading)),
+                    errorWidget:
+                        (context, url, error) =>
+                            Image.asset(AppAssets.product, fit: BoxFit.contain),
+                  ),
                 ),
               ),
             ),

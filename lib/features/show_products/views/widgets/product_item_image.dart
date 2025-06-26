@@ -10,17 +10,21 @@ class ProductItemImage extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: CachedNetworkImage(
-            imageUrl: imageUrl,
-            placeholder: (context, url) => Lottie.asset(AppAssets.imageLoading),
-            errorWidget: (context, url, error) => Icon(Icons.error),
+    return Hero(
+      tag: 'image_$imageUrl',
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              placeholder:
+                  (context, url) => Lottie.asset(AppAssets.imageLoading),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
           ),
-        ),
-        Positioned(top: 8.h, right: 8.w, child: AddToCartIcon()),
-      ],
+          Positioned(top: 8.h, right: 8.w, child: AddToCartIcon()),
+        ],
+      ),
     );
   }
 }
