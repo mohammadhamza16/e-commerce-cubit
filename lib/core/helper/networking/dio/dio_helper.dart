@@ -4,10 +4,10 @@ import 'package:e_commerce_app/core/helper/networking/dio/dio_errors.dart';
 import 'package:e_commerce_app/core/helper/networking/dio/end_points.dart';
 
 class DioHelper {
-  final Dio _dio;
+  final Dio dio;
 
   DioHelper()
-    : _dio = Dio(
+    : dio = Dio(
         BaseOptions(
           baseUrl: EndPoints.baseUrl,
           connectTimeout: const Duration(seconds: 5),
@@ -21,7 +21,7 @@ class DioHelper {
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await _dio.get(
+      final response = await dio.get(
         endPoint,
         queryParameters: queryParameters,
         options: Options(headers: headers),
@@ -38,7 +38,24 @@ class DioHelper {
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await _dio.post(
+      final response = await dio.post(
+        endPoint,
+        data: data,
+        options: Options(headers: headers),
+      );
+      return Right(response);
+    } catch (error) {
+      return Left(DioErrors.getErrorMessage(error));
+    }
+  }
+
+  Future<Either<String, Response>> put({
+    required String endPoint,
+    dynamic data,
+    Map<String, dynamic>? headers,
+  }) async {
+    try {
+      final response = await dio.put(
         endPoint,
         data: data,
         options: Options(headers: headers),

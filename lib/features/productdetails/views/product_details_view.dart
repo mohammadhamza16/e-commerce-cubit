@@ -1,12 +1,17 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/styles/app_assets.dart';
 import 'package:e_commerce_app/core/styles/app_color.dart';
 import 'package:e_commerce_app/core/styles/app_style.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
+import 'package:e_commerce_app/features/auth/views/widgets/animated_snack_bar.dart';
+import 'package:e_commerce_app/features/cart/viewmodels/cubit/cart_cubit.dart';
 import 'package:e_commerce_app/features/show_products/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../core/helper/service_locator.dart';
 
 class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({super.key});
@@ -101,7 +106,18 @@ class ProductDetailsView extends StatelessWidget {
                   CustomButton(
                     icon: Icon(Icons.add_shopping_cart, color: Colors.white),
                     text: 'Add To Cart',
-                    onPressed: () {},
+                    onPressed: () {
+                      getIt<CartCubit>().updateCart(
+                        productModel: product,
+                        quantity: 1,
+                      );
+
+                      showAnimatedSnackBar(
+                        message: 'Added to cart ',
+                        context: context,
+                        type: AnimatedSnackBarType.success,
+                      );
+                    },
                     width: MediaQuery.sizeOf(context).width * .6,
                   ),
                 ],

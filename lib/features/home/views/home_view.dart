@@ -39,7 +39,6 @@ class _HomeViewState extends State<HomeView> {
   _changeIndex(int index) {
     setState(() {
       _selectedIndex = index;
-      // Update the views based on the selected index
     });
   }
 

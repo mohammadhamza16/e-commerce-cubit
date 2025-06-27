@@ -5,7 +5,7 @@ class EndPoints {
   static const String allProducts = '/products';
   static const String productDetails = '/products/details';
   static const String categories = '/products/categories';
-  static const String cart = '/carts';
-  static const String cartProduct = '/category';
+  static String getUserCart(int userId) => '/carts/user/$userId';
+  static String updateCart(int cartId) => '/carts/$cartId';
   static const String productsByCategory = '/products/category';
 }

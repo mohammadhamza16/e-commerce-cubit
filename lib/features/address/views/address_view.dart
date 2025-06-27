@@ -9,7 +9,7 @@ class AddressView extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: const Text('Address'), centerTitle: true),
         body: ListView.builder(
-          itemCount: 10, // Example item count
+          itemCount: 10,
           itemBuilder: (context, index) {
             return AddressItem(
               address: 'Address $index',

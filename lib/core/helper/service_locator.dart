@@ -6,6 +6,8 @@ import 'package:e_commerce_app/features/auth/viewmodels/cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/cubit/category_cubit/category_cubit.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/cubit/products_cubit/products_cubit.dart';
 import 'package:e_commerce_app/features/show_products/viewmodels/repo/home_repo.dart';
+import 'package:e_commerce_app/features/cart/viewmodels/repo/cart_repo.dart';
+import 'package:e_commerce_app/features/cart/viewmodels/cubit/cart_cubit.dart';
 
 import 'package:get_it/get_it.dart';
 
@@ -20,6 +22,9 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<HomeRepo>(
     () => HomeRepo(dioHelper: getIt<DioHelper>()),
   );
+  getIt.registerLazySingleton<CartRepo>(
+    () => CartRepo(dioHelper: getIt<DioHelper>()),
+  );
   getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt<AuthRepo>()));
   getIt.registerFactory<ProductsCubit>(
     () => ProductsCubit(homeRepo: getIt<HomeRepo>()),
@@ -27,6 +32,7 @@ void setupServiceLocator() {
   getIt.registerFactory<CategoryCubit>(
     () => CategoryCubit(homeRepo: getIt<HomeRepo>()),
   );
+  getIt.registerFactory<CartCubit>(() => CartCubit());
 
   getIt.registerLazySingleton<SecureTokenStorage>(() => SecureTokenStorage());
 }

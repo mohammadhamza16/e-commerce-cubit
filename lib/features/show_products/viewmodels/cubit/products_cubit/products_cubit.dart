@@ -13,22 +13,26 @@ class ProductsCubit extends Cubit<ProductsState> {
       super(ProductsInitial());
   final HomeRepo _homeRepo;
   Future<Either<String, List<ProductModel>>> fetchProducts() async {
+    if (isClosed) return const Left('Cubit is closed');
     emit(ProductsInitial());
     try {
       final Either<String, List<ProductModel>> result =
           await _homeRepo.fetchProducts();
       return result.fold(
         (failure) {
+          if (isClosed) return Left(failure);
           emit(ProductsError(failure));
           return Left(failure);
         },
         (products) {
+          if (isClosed) return Left('Cubit is closed');
           emit(ProductsSuccess(products));
           return Right(products);
         },
       );
     } catch (e) {
       final errorMsg = e.toString();
+      if (isClosed) return Left(errorMsg);
       emit(ProductsError(errorMsg));
       return Left(errorMsg);
     }
@@ -37,22 +41,26 @@ class ProductsCubit extends Cubit<ProductsState> {
   Future<Either<String, List<ProductModel>>> fetchProductsByCategory({
     required String categoryName,
   }) async {
+    if (isClosed) return const Left('Cubit is closed');
     emit(ProductsInitial());
     try {
       final Either<String, List<ProductModel>> result = await _homeRepo
           .fetchProductsByCategory(categoryName: categoryName);
       return result.fold(
         (failure) {
+          if (isClosed) return Left(failure);
           emit(ProductsError(failure));
           return Left(failure);
         },
         (products) {
+          if (isClosed) return Left('Cubit is closed');
           emit(ProductsSuccess(products));
           return Right(products);
         },
       );
     } catch (e) {
       final errorMsg = e.toString();
+      if (isClosed) return Left(errorMsg);
       emit(ProductsError(errorMsg));
       return Left(errorMsg);
     }
